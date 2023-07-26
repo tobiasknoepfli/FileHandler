@@ -188,7 +188,6 @@ public class MainController {
         dialog.setHeaderText(header);
         dialog.getEditor().setText(sampleText);
 
-        // Show the input dialog and wait for the user response
         Optional<String> result = dialog.showAndWait();
 
         return result.orElse(null);
