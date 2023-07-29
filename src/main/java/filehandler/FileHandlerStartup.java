@@ -15,6 +15,10 @@ public class FileHandlerStartup extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 984, 600);
         stage.setTitle("FileHandler");
 
+        String cssPath = getClass().getResource("style.css").toExternalForm();
+        scene.getStylesheets().add(cssPath);
+
+
         Parameters params = getParameters();
         List<String> rawParams = params.getRaw();
         if (rawParams.size() > 0) {
