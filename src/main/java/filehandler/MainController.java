@@ -72,6 +72,14 @@ public class MainController {
     @FXML
     private void openPathChooser(ActionEvent event) {
         DirectoryChooser directoryChooser = new DirectoryChooser();
+
+        String currentPath = pathTextField.getText();
+        File initialDirectory = new File(currentPath);
+
+        if (initialDirectory.exists() && initialDirectory.isDirectory()){
+            directoryChooser.setInitialDirectory(initialDirectory);
+        }
+
         File selectedDirectory = directoryChooser.showDialog(new Stage());
 
         if (selectedDirectory != null) {
@@ -87,6 +95,18 @@ public class MainController {
     @FXML
     private void targetPathChooser() {
         DirectoryChooser directoryChooser = new DirectoryChooser();
+
+        String currentTargetPath = targetTextField.getText();
+        if(currentTargetPath.isEmpty()){
+            currentTargetPath = pathTextField.getText();
+        }
+
+        File initialDirectory = new File(currentTargetPath);
+
+        if(initialDirectory.exists() && initialDirectory.isDirectory()){
+            directoryChooser.setInitialDirectory(initialDirectory);
+        }
+
         File selectedDirectory = directoryChooser.showDialog(new Stage());
 
         if (selectedDirectory != null) {
