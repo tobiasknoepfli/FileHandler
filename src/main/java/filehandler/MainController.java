@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
@@ -22,6 +23,13 @@ import java.util.Optional;
 
 
 public class MainController {
+
+    @FXML
+    private Pane headerPane;
+
+    @FXML
+    private Button xButton;
+
     @FXML
     private TextField pathTextField;
 

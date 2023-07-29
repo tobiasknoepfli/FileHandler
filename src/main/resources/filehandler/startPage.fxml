@@ -8,46 +8,53 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="984.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="filehandler.MainController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="984.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="filehandler.MainController">
     <children>
-        <TextField fx:id="pathTextField" layoutX="63.0" layoutY="28.0" prefHeight="25.0" prefWidth="600.0" />
-        <TextField fx:id="targetTextField" layoutX="63.0" layoutY="61.0" prefHeight="25.0" prefWidth="600.0" />
-        <TableView fx:id="contentsTable" layoutX="63.0" layoutY="100.0" prefHeight="264.0" prefWidth="600.0">
+        <TextField fx:id="pathTextField" layoutX="61.0" layoutY="60.0" prefHeight="25.0" prefWidth="600.0" />
+        <TextField fx:id="targetTextField" layoutX="61.0" layoutY="93.0" prefHeight="25.0" prefWidth="600.0" />
+        <TableView fx:id="contentsTable" layoutX="61.0" layoutY="132.0" prefHeight="264.0" prefWidth="600.0">
             <columns>
                 <TableColumn fx:id="nameColumn" prefWidth="200.0" text="Name" />
                 <TableColumn fx:id="pathColumn" prefWidth="200.0" text="Path" />
                 <TableColumn fx:id="typeColumn" prefWidth="200.0" text="Type" />
             </columns>
         </TableView>
-        <Button fx:id="pathPickerPath" layoutX="684.0" layoutY="28.0" mnemonicParsing="false" onAction="#openPathChooser" prefHeight="25.0" prefWidth="139.0" text="pick root path" />
-        <Button fx:id="pathPickerTarget" layoutX="684.0" layoutY="61.0" mnemonicParsing="false" onAction="#targetPathChooser" prefHeight="25.0" prefWidth="139.0" text="pick target path" />
-        <Button fx:id="moveButton" layoutX="683.0" layoutY="128.0" mnemonicParsing="false" onAction="#moveButtonAction" prefHeight="49.0" prefWidth="139.0" text="move selected files" />
-        <Button fx:id="copyButton" layoutX="683.0" layoutY="190.0" mnemonicParsing="false" onAction="#copyButtonAction" prefHeight="49.0" prefWidth="139.0" text="copy selected files" />
-        <ToggleButton fx:id="rootShortcutButton" layoutX="837.0" layoutY="128.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="139.0" text="create shortcut in root folder" textAlignment="CENTER" wrapText="true" />
-        <ToggleButton fx:id="targetShortcutButton" layoutX="837.0" layoutY="190.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="139.0" text="create shortcut in target folder" textAlignment="CENTER" wrapText="true" />
-        <ToggleButton fx:id="targetFolderButton" layoutX="837.0" layoutY="253.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="139.0" text="create folder in target and shortcut in root" textAlignment="CENTER" wrapText="true" />
-        <TableView fx:id="moveTable" layoutX="63.0" layoutY="374.0" prefHeight="200.0" prefWidth="250.0">
+        <Button fx:id="pathPickerPath" layoutX="682.0" layoutY="60.0" mnemonicParsing="false" onAction="#openPathChooser" prefHeight="25.0" prefWidth="139.0" text="pick root path" />
+        <Button fx:id="pathPickerTarget" layoutX="682.0" layoutY="93.0" mnemonicParsing="false" onAction="#targetPathChooser" prefHeight="25.0" prefWidth="139.0" text="pick target path" />
+        <Button fx:id="moveButton" layoutX="681.0" layoutY="160.0" mnemonicParsing="false" onAction="#moveButtonAction" prefHeight="49.0" prefWidth="139.0" text="move selected files" />
+        <Button fx:id="copyButton" layoutX="681.0" layoutY="222.0" mnemonicParsing="false" onAction="#copyButtonAction" prefHeight="49.0" prefWidth="139.0" text="copy selected files" />
+        <ToggleButton fx:id="rootShortcutButton" layoutX="835.0" layoutY="160.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="139.0" text="create shortcut in root folder" textAlignment="CENTER" wrapText="true" />
+        <ToggleButton fx:id="targetShortcutButton" layoutX="835.0" layoutY="222.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="139.0" text="create shortcut in target folder" textAlignment="CENTER" wrapText="true" />
+        <ToggleButton fx:id="targetFolderButton" layoutX="835.0" layoutY="285.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="139.0" text="create folder in target and shortcut in root" textAlignment="CENTER" wrapText="true" />
+        <TableView fx:id="moveTable" layoutX="61.0" layoutY="406.0" prefHeight="200.0" prefWidth="250.0">
             <columns>
                 <TableColumn fx:id="moveColumn" prefWidth="250.0" text="Move Files" />
             </columns>
         </TableView>
-        <TableView fx:id="copyTable" layoutX="320.0" layoutY="374.0" prefHeight="200.0" prefWidth="250.0">
+        <TableView fx:id="copyTable" layoutX="318.0" layoutY="406.0" prefHeight="200.0" prefWidth="250.0">
             <columns>
                 <TableColumn fx:id="copyColumn" prefWidth="250.0" text="Copy Files" />
             </columns>
         </TableView>
-        <Button fx:id="OKButton" layoutX="837.0" layoutY="525.0" mnemonicParsing="false" onAction="#OKButtonAction" prefHeight="49.0" prefWidth="139.0" text="OK" />
-        <Button fx:id="cancelButton" layoutX="837.0" layoutY="463.0" mnemonicParsing="false" onAction="#cancelButtonAction" prefHeight="49.0" prefWidth="139.0" text="Cancel" />
-        <CheckBox fx:id="returnShortcut" layoutX="836.0" layoutY="347.0" mnemonicParsing="false" text="include return shortcut" />
-      <Button fx:id="deleteButton" layoutX="684.0" layoutY="253.0" mnemonicParsing="false" onAction="#deleteButtonAction" prefHeight="49.0" prefWidth="139.0" text="delete selected files" />
-      <TableView fx:id="deleteTable" layoutX="577.0" layoutY="374.0" prefHeight="200.0" prefWidth="250.0">
+        <Button fx:id="OKButton" layoutX="835.0" layoutY="557.0" mnemonicParsing="false" onAction="#OKButtonAction" prefHeight="49.0" prefWidth="139.0" text="OK" />
+        <Button fx:id="cancelButton" layoutX="835.0" layoutY="495.0" mnemonicParsing="false" onAction="#cancelButtonAction" prefHeight="49.0" prefWidth="139.0" text="Cancel" />
+        <CheckBox fx:id="returnShortcut" layoutX="834.0" layoutY="379.0" mnemonicParsing="false" text="include return shortcut" />
+      <Button fx:id="deleteButton" layoutX="682.0" layoutY="285.0" mnemonicParsing="false" onAction="#deleteButtonAction" prefHeight="49.0" prefWidth="139.0" text="delete selected files" />
+      <TableView fx:id="deleteTable" layoutX="575.0" layoutY="406.0" prefHeight="200.0" prefWidth="250.0">
          <columns>
             <TableColumn fx:id="deleteColumn" prefWidth="250.0" text="Delete Files" />
          </columns>
       </TableView>
-      <Label layoutX="10.0" layoutY="32.0" text="Root" />
-      <Label layoutX="10.0" layoutY="65.0" text="Target" />
-      <Label layoutX="10.0" layoutY="100.0" text="Contents" />
+      <Label layoutX="8.0" layoutY="64.0" text="Root" />
+      <Label layoutX="8.0" layoutY="97.0" text="Target" />
+      <Label layoutX="8.0" layoutY="132.0" text="Contents" />
+      <Pane fx:id="headerPane" prefHeight="35.0" prefWidth="984.0">
+         <children>
+            <Button layoutX="949.0" layoutY="4.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" text="X" fx:id="xButton" onAction="#cancelButtonAction"/>
+            <Label fx:id="headerLabel" layoutX="8.0" layoutY="4.0" prefHeight="17.0" prefWidth="930.0" text="FileHandler" />
+         </children>
+      </Pane>
     </children>
 </Pane>
