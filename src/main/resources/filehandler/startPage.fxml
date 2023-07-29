@@ -31,12 +31,12 @@
         <ToggleButton fx:id="targetFolderButton" layoutX="684.0" layoutY="291.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="139.0" text="create folder in target and shortcut in root" textAlignment="CENTER" wrapText="true" />
         <TableView fx:id="moveTable" layoutX="63.0" layoutY="374.0" prefHeight="200.0" prefWidth="250.0">
             <columns>
-                <TableColumn fx:id="moveColumn" prefWidth="250.0" text="Name" />
+                <TableColumn fx:id="moveColumn" prefWidth="250.0" text="Move Files" />
             </columns>
         </TableView>
         <TableView fx:id="copyTable" layoutX="413.0" layoutY="374.0" prefHeight="200.0" prefWidth="250.0">
             <columns>
-                <TableColumn fx:id="copyColumn" prefWidth="250.0" text="Name" />
+                <TableColumn fx:id="copyColumn" prefWidth="250.0" text="Copy Files" />
             </columns>
         </TableView>
         <Text layoutX="10.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contents" wrappingWidth="50.13671875" />
