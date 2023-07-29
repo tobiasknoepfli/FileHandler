@@ -140,27 +140,8 @@ public class MainController {
     @FXML
     private void OKButtonAction(ActionEvent event) {
         String targetPath = targetTextField.getText();
+        String newPath = targetTextField.getText();
         String sourcePath = pathTextField.getText();
-
-        List<File> moveFiles = moveTable.getItems();
-        for (File file : moveFiles) {
-            File destination = new File(targetPath, file.getName());
-            try {
-                Files.move(file.toPath(), destination.toPath(), StandardCopyOption.REPLACE_EXISTING);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-
-        List<File> copyFiles = copyTable.getItems();
-        for (File file : copyFiles) {
-            File destination = new File(targetPath, file.getName());
-            try {
-                Files.copy(file.toPath(), destination.toPath(), StandardCopyOption.REPLACE_EXISTING);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
 
         if (rootShortcutButton.isSelected()) {
             String name = showInputDialog("Shortcut Name", "enter the shortcut name", "ShortcutInRoot");
@@ -182,9 +163,33 @@ public class MainController {
             newFolder.mkdir();
 
             String nameShortcut = showInputDialog("Shortcut Name", "enter the shortcut name", "ShortcutInTargetToFolder");
-            createShortcut(targetPath + "/" + name, sourcePath, nameShortcut);
+
+            newPath = targetTextField.getText() + "\\" + name;
+
+            createShortcut(newPath, sourcePath, nameShortcut);
             if (returnShortcut.isSelected()) {
-                createShortcut(sourcePath, targetPath + "/" + name, "return " + nameShortcut);
+                createShortcut(sourcePath, newPath, "return " + nameShortcut);
+            }
+            targetPath = newPath;
+        }
+
+        List<File> moveFiles = moveTable.getItems();
+        for (File file : moveFiles) {
+            File destination = new File(targetPath, file.getName());
+            try {
+                Files.move(file.toPath(), destination.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        List<File> copyFiles = copyTable.getItems();
+        for (File file : copyFiles) {
+            File destination = new File(targetPath, file.getName());
+            try {
+                Files.copy(file.toPath(), destination.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
 
