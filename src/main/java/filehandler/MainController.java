@@ -52,6 +52,12 @@ public class MainController {
     private TableColumn<File, String> copyColumn;
 
     @FXML
+    private TableView<File> deleteTable;
+
+    @FXML
+    private TableColumn<File, String> deleteColumn;
+
+    @FXML
     private Button OKButton;
 
     @FXML
@@ -133,6 +139,15 @@ public class MainController {
     }
 
     @FXML
+    private void deleteButtonAction(ActionEvent event) {
+        ObservableList<File> selectedFiles = contentsTable.getSelectionModel().getSelectedItems();
+        deleteColumn.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getName()));
+        deleteTable.getItems().addAll(selectedFiles);
+        contentsTable.getItems().removeAll(selectedFiles);
+        contentsTable.getSelectionModel().clearSelection();
+    }
+
+    @FXML
     private void cancelButtonAction(ActionEvent event) {
         Platform.exit();
     }
@@ -193,8 +208,19 @@ public class MainController {
             }
         }
 
+        List<File> deleteFiles = deleteTable.getItems();
+        for (File file : deleteFiles) {
+            File destination = new File(sourcePath, file.getName());
+            try {
+                Files.delete(destination.toPath());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
         moveTable.getItems().clear();
         copyTable.getItems().clear();
+        deleteTable.getItems().clear();
 
         Platform.exit();
     }
@@ -228,4 +254,29 @@ public class MainController {
             FileHandler.populateContentsTable(contentsTable, nameColumn, pathColumn, typeColumn, selectedDirectory);
         }
     }
+
+
+    @FXML
+    private void initialize() {
+        doubleClick(moveTable);
+        doubleClick(copyTable);
+        doubleClick(deleteTable);
+    }
+
+    private void doubleClick(TableView<File> table){
+        table.setRowFactory(tv -> {
+            TableRow<File> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() ==2 && !row.isEmpty()) {
+                    File file = row.getItem();
+                    table.getItems().remove(file);
+                    contentsTable.getItems().add(file);
+                }
+            });
+            return  row;
+        });
+    }
+
 }
+
+
