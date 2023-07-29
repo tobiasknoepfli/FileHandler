@@ -194,5 +194,12 @@ public class MainController {
     }
     public void setPathTextField(String folderPath) {
         pathTextField.setText(folderPath);
+
+        // Load the contents of the selected folder into the table view
+        File selectedDirectory = new File(folderPath);
+        if (selectedDirectory.exists() && selectedDirectory.isDirectory()) {
+            typeColumn.setCellValueFactory(new PropertyValueFactory<>("fileType"));
+            FileHandler.populateContentsTable(contentsTable, nameColumn, pathColumn, typeColumn, selectedDirectory);
+        }
     }
 }

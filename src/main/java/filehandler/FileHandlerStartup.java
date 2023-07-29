@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 public class FileHandlerStartup extends Application {
     @Override
@@ -15,8 +16,9 @@ public class FileHandlerStartup extends Application {
         stage.setTitle("FileHandler");
 
         Parameters params = getParameters();
-        if (params.getRaw().size() > 0) {
-            String folderPath = params.getRaw().get(0);
+        List<String> rawParams = params.getRaw();
+        if (rawParams.size() > 0) {
+            String folderPath = rawParams.get(0);
             MainController mainController = fxmlLoader.getController();
             mainController.setPathTextField(folderPath);
         }
@@ -27,6 +29,6 @@ public class FileHandlerStartup extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
 }
