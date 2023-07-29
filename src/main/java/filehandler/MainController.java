@@ -76,7 +76,7 @@ public class MainController {
         String currentPath = pathTextField.getText();
         File initialDirectory = new File(currentPath);
 
-        if (initialDirectory.exists() && initialDirectory.isDirectory()){
+        if (initialDirectory.exists() && initialDirectory.isDirectory()) {
             directoryChooser.setInitialDirectory(initialDirectory);
         }
 
@@ -97,13 +97,13 @@ public class MainController {
         DirectoryChooser directoryChooser = new DirectoryChooser();
 
         String currentTargetPath = targetTextField.getText();
-        if(currentTargetPath.isEmpty()){
+        if (currentTargetPath.isEmpty()) {
             currentTargetPath = pathTextField.getText();
         }
 
         File initialDirectory = new File(currentTargetPath);
 
-        if(initialDirectory.exists() && initialDirectory.isDirectory()){
+        if (initialDirectory.exists() && initialDirectory.isDirectory()) {
             directoryChooser.setInitialDirectory(initialDirectory);
         }
 
@@ -163,28 +163,28 @@ public class MainController {
         }
 
         if (rootShortcutButton.isSelected()) {
-            String name = showInputDialog("Shortcut Name", "enter the shortcut name","ShortcutInRoot");
+            String name = showInputDialog("Shortcut Name", "enter the shortcut name", "ShortcutInRoot");
             createShortcut(targetPath, sourcePath, name);
-            if(returnShortcut.isSelected()){
-                createShortcut(sourcePath,targetPath,"return " + name);
+            if (returnShortcut.isSelected()) {
+                createShortcut(sourcePath, targetPath, "return " + name);
             }
         }
         if (targetShortcutButton.isSelected()) {
-            String name = showInputDialog("Shortcut Name", "enter the shortcut name","ShortcutInTarget");
-            createShortcut(sourcePath,targetPath,name);
-            if(returnShortcut.isSelected()){
-                createShortcut(targetPath,sourcePath,"return " + name);
+            String name = showInputDialog("Shortcut Name", "enter the shortcut name", "ShortcutInTarget");
+            createShortcut(sourcePath, targetPath, name);
+            if (returnShortcut.isSelected()) {
+                createShortcut(targetPath, sourcePath, "return " + name);
             }
         }
-        if(targetFolderButton.isSelected()){
-            String name = showInputDialog("Folder Name", "enter the folder name","new Folder");
+        if (targetFolderButton.isSelected()) {
+            String name = showInputDialog("Folder Name", "enter the folder name", "new Folder");
             File newFolder = new File(targetPath, name);
             newFolder.mkdir();
 
-            String nameShortcut = showInputDialog("Shortcut Name", "enter the shortcut name","ShortcutInTargetToFolder");
-            createShortcut(targetPath + "/" + name,sourcePath,nameShortcut);
-            if(returnShortcut.isSelected()){
-                createShortcut(sourcePath,targetPath + "/" + name,"return " + nameShortcut);
+            String nameShortcut = showInputDialog("Shortcut Name", "enter the shortcut name", "ShortcutInTargetToFolder");
+            createShortcut(targetPath + "/" + name, sourcePath, nameShortcut);
+            if (returnShortcut.isSelected()) {
+                createShortcut(sourcePath, targetPath + "/" + name, "return " + nameShortcut);
             }
         }
 
@@ -196,13 +196,13 @@ public class MainController {
 
     private void createShortcut(String targetFolder, String sourceFolder, String shortcutName) {
         try {
-            ShortcutFactory.createShortcut(targetFolder,sourceFolder + "/" +shortcutName + ".lnk");
-        } catch(Exception e){
+            ShortcutFactory.createShortcut(targetFolder, sourceFolder + "/" + shortcutName + ".lnk");
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private String showInputDialog(String title,String header, String sampleText) {
+    private String showInputDialog(String title, String header, String sampleText) {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle(title);
         dialog.setHeaderText(header);
@@ -212,6 +212,7 @@ public class MainController {
 
         return result.orElse(null);
     }
+
     public void setPathTextField(String folderPath) {
         pathTextField.setText(folderPath);
 

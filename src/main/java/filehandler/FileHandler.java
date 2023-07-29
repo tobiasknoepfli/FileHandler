@@ -16,9 +16,9 @@ public class FileHandler {
     public static TableColumn<File, String> nameColumn;
     public static TableColumn<File, String> pathColumn;
     public static TableColumn<File, String> typeColumn = new TableColumn<>("Type"); // New column for file type
-    public static TableColumn<File,String> moveColumn;
+    public static TableColumn<File, String> moveColumn;
 
-    public static TableColumn<File,String> copyColumn;
+    public static TableColumn<File, String> copyColumn;
 
 
     public static void populateContentsTable(

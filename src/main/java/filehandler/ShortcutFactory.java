@@ -8,14 +8,14 @@ import java.io.IOException;
 public class ShortcutFactory {
 
     public static void createDesktopShortcut(String source, String linkName) throws FileNotFoundException {
-        String linkPath = System.getProperty("user.home")+"/Desktop/"+linkName;
+        String linkPath = System.getProperty("user.home") + "/Desktop/" + linkName;
         createShortcut(source, linkPath);
     }
 
     public static void createShortcut(String source, String linkPath) throws FileNotFoundException {
         File sourceFile = new File(source);
-        if(!sourceFile.exists()) {
-            throw new FileNotFoundException("The Path: "+sourceFile.getAbsolutePath()+" does not exist!");
+        if (!sourceFile.exists()) {
+            throw new FileNotFoundException("The Path: " + sourceFile.getAbsolutePath() + " does not exist!");
         }
         try {
             source = sourceFile.getAbsolutePath();
@@ -38,17 +38,17 @@ public class ShortcutFactory {
 
 
     public static void createDesktopShortcut(String source, String linkName, String iconPath) throws FileNotFoundException {
-        String linkPath = System.getProperty("user.home")+"/Desktop/"+linkName;
+        String linkPath = System.getProperty("user.home") + "/Desktop/" + linkName;
         createShortcut(source, linkPath, iconPath);
     }
 
     public static void createShortcut(String source, String linkPath, String iconPath) throws FileNotFoundException {
         File sourceFile = new File(source);
         File iconFile = new File(iconPath);
-        if(!sourceFile.exists())
-            throw new FileNotFoundException("The Path: "+sourceFile.getAbsolutePath()+" does not exist!");
-        if(!iconFile.exists())
-            throw new FileNotFoundException("The Path: "+iconFile.getAbsolutePath()+" does not exist!");
+        if (!sourceFile.exists())
+            throw new FileNotFoundException("The Path: " + sourceFile.getAbsolutePath() + " does not exist!");
+        if (!iconFile.exists())
+            throw new FileNotFoundException("The Path: " + iconFile.getAbsolutePath() + " does not exist!");
         try {
             source = sourceFile.getAbsolutePath();
             iconPath = iconFile.getAbsolutePath();
@@ -81,10 +81,10 @@ public class ShortcutFactory {
         writer.write(code);
         writer.close();
 
-        Process p = Runtime.getRuntime().exec( "wscript \""+script.getAbsolutePath()+"\""); // executes vbs code via cmd
+        Process p = Runtime.getRuntime().exec("wscript \"" + script.getAbsolutePath() + "\""); // executes vbs code via cmd
         p.waitFor(); // waits for process to finish
-        if(!script.delete()) { // deletes script
-            System.err.println("Warning Failed to delete temporary VBS File at: \""+script.getAbsolutePath()+"\"");
+        if (!script.delete()) { // deletes script
+            System.err.println("Warning Failed to delete temporary VBS File at: \"" + script.getAbsolutePath() + "\"");
         }
     }
 }
